@@ -35,6 +35,8 @@ function App() {
 
     const onRemoveList = (id) => {
         setLists(lists.filter(i => i.id != id))
+        axios.delete(`http://localhost:3001/lists/${id}`).then(()=>{
+        })
     }
 
     return (

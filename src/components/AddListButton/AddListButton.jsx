@@ -6,6 +6,7 @@ import closeSvg from '../../assets/img/close.svg'
 import axios from "axios";
 
 const AddListButton = ({colors, onAddList}) => {
+
     let [visiblePopup, setvisiblePopup] = useState(false)
     let [selectedColor, selectColor] = useState(3)
     let [inputValue, setInputValue] = useState('')
@@ -15,6 +16,7 @@ const AddListButton = ({colors, onAddList}) => {
         if (Array.isArray(colors)) selectColor(colors[0].id)
 
     }, [colors])
+
     const onClose = () => {
         setInputValue('')
         setvisiblePopup(false)
@@ -35,8 +37,8 @@ const AddListButton = ({colors, onAddList}) => {
             onClose()
             setIsLoading(false)
         })
-
     }
+
     return (
         <div className={'add-list'}>
             <List onClick={() => {

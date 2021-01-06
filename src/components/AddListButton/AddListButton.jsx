@@ -44,7 +44,9 @@ const AddListButton = ({colors, onAddList}) => {
             <List onClick={() => {
                 if (visiblePopup) onClose()
                 setvisiblePopup(!visiblePopup)
-            }} items={[
+            }}
+
+                  items={[
                 {
                     className: 'list__add-button',
                     icon: <svg width="12" height="12" viewBox="0 0 16 16" fill="none"
@@ -55,6 +57,7 @@ const AddListButton = ({colors, onAddList}) => {
                     name: 'Добавить список'
                 }
             ]}/>
+
             {visiblePopup && <div className={'add-list__popup'}>
                 <img src={closeSvg} onClick={onClose} className={'add-list__popup-close-btn'} alt="Close button"/>
                 <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} className={'field'}

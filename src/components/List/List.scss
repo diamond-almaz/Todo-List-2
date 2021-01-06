@@ -28,16 +28,22 @@
     }
 
     span {
-      flex: 1;
+       text-overflow: ellipsis;
+      overflow: hidden;
+      width: 160px;
+      white-space: nowrap;
     }
 
     &.active {
       background: #FFFFFF;
       box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.05);
       border-radius: 4px;
+      &:hover {
+        background: #FFFFFF;
+      }
     }
     &:hover {
-      background: rgba(255,255,255,0.5);
+      background: rgba(255, 255, 255, 0.8);
     }
 
 

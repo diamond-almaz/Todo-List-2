@@ -16,9 +16,10 @@ function App() {
 
     let [lists, setLists] = React.useState(null);
     let [colors, setColors] = React.useState(null)
+    let [activeItem,setactiveItem]=React.useState(null)
 
     useEffect(() => {
-        axios.get('http://localhost:3001/lists?_expand=color').then(({data}) => {
+        axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
             setLists(data);
         });
 
@@ -54,13 +55,15 @@ function App() {
                         active: true
                     }
                 ]}/>
-                <List items={lists} onRemove={onRemoveList}
+                <List onClickItem={(i)=>{
+                    setactiveItem(i)
+                }} items={lists} onRemove={onRemoveList} activeItem={activeItem && activeItem}
                       isRemovable
                 />
                 <AddListButton onAddList={onAddList} colors={colors}/>
             </div>
             <div className={'todo__tasks'}>
-                <Tasks/>
+                {activeItem && lists &&<Tasks lists={activeItem }/>}
             </div>
 
         </div>

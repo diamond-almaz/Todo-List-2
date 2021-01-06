@@ -1,8 +1,9 @@
 import React from 'react';
 import './Tasks.scss'
 import editSvg from '../../assets/img/edit.svg'
+import AddTaskForm from "./AddTaskForm";
 
-const Tasks = ({lists,updateListName}) => {
+const Tasks = ({lists,updateListName,addTask}) => {
     console.log('tasks')
     const showFromUpdate=()=>{
         let newTitle=prompt('Введите пожалуйста название', lists.name)
@@ -16,7 +17,6 @@ const Tasks = ({lists,updateListName}) => {
                 <img onClick={showFromUpdate} src={editSvg} alt='Edit icon'/>
             </h2>
             <div className="tasks__items">
-
                 {lists.tasks.length > 0 ? lists.tasks.map(i => {
                     return <div key={i.id} className="tasks__items-row">
                         <div className={'checkbox'}>
@@ -33,8 +33,8 @@ const Tasks = ({lists,updateListName}) => {
                         </div>
                         <input readOnly type="text" value={i.text}/>
                     </div>
-
                 }) : <h2>Задачи отcутcтвуют</h2>}
+                <AddTaskForm listId={lists.id} addTask={addTask}/>
 
             </div>
         </div>

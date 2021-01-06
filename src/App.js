@@ -48,6 +48,19 @@ function App() {
         axios.patch('http://localhost:3001/lists/'+id,{name: newTitle}).catch(()=>alert('Не получилось обновить название списка'))
     }
 
+    const addTask=(listId, text)=>{
+        const obj={listId, text, "completed": false }
+        const newList=lists.map(i=>{
+            if (i.id==listId) {
+                i.tasks=[...i.tasks,obj]
+            }
+            return i
+        })
+        axios.post('http://localhost:3001/tasks', obj)
+         setLists(newList)
+
+    }
+
     return (
         <div className="todo">
             <div className={'todo__sidebar'}>
@@ -71,7 +84,7 @@ function App() {
                 <AddListButton onAddList={onAddList} colors={colors}/>
             </div>
             <div className={'todo__tasks'}>
-                {activeItem && lists &&<Tasks updateListName={updateListName} lists={activeItem }/>}
+                {activeItem && lists &&<Tasks addTask={addTask} updateListName={updateListName} lists={activeItem }/>}
             </div>
 
         </div>

@@ -23,6 +23,37 @@
     }
 
   }
+  &__form {
+    margin-top: 20px;
+    &-new {
+    display: flex;
+    align-items: center;
+      cursor: pointer ;
+      opacity: 0.4;
+      &:hover {
+        opacity: 0.8;
+      }
+
+      img  {
+        width: 15px;
+        height: 15px;
+        margin-left: 4px;
+      }
+      span {
+        font-size: 16px;
+        margin-left: 19px;
+      }
+    }
+    &-block {
+      &-btns {
+        margin-top: 16px;
+        button {
+          margin-right: 10px;
+        }
+      }
+    }
+
+  }
   .checkbox {
     input {
       display: none;

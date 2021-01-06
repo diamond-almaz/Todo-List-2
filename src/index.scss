@@ -45,6 +45,7 @@
   border-radius: 4px;
   padding: 8px 12px;
   width: 100%;
+  font-size: 14px;
   &:focus {
     border-color: #dddddd;
   }
@@ -57,11 +58,25 @@
   border: 0;
   color: white;
   cursor: pointer;
+  font-size: 14px;
   &:hover {
     background: darken(#4DD599, 6%);
   }
   &:active {
     background: darken(#4DD599, 10%);
+  }
+
+  &--grey {
+    background-color: #F4F6F8;
+    color: #737373;
+    &:hover {
+      background: darken(white, 5%);
+    }
+
+    &:active {
+      background: darken(white, 10%);
+    }
+  ;
   }
 
 }

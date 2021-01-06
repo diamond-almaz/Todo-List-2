@@ -10,13 +10,14 @@
 
 
 .todo {
+  display: flex;
   position: absolute;
   left: 50%;
   top: 50%;
   width: 750px;
-  height: 530px;
+  min-height: 530px;
   transform: translate(-50%, -50%);
-  box-shadow: 1px 2px 20px #f3f3f3;
+  box-shadow: 1px 2px 20px #d2d2d2;
   border-radius: 10px;
   border: 1px solid #F1F1F1;
   font-size: 14px;
@@ -29,5 +30,38 @@
     padding: 60px 20px;
   }
 
+  &__tasks {
+    flex: 1;
+    padding: 60px;
+  }
+}
+
+
+
+.field {
+  background: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+  &:focus {
+    border-color: #dddddd;
+  }
+}
+
+.button {
+  background: #4DD599;
+  border-radius: 4px;
+  padding: 10px 20px;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  &:hover {
+    background: darken(#4DD599, 6%);
+  }
+  &:active {
+    background: darken(#4DD599, 10%);
+  }
 
 }

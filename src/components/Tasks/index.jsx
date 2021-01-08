@@ -3,8 +3,7 @@ import './Tasks.scss'
 import editSvg from '../../assets/img/edit.svg'
 import AddTaskForm from "./AddTaskForm";
 
-const Tasks = ({lists,updateListName,addTask}) => {
-    console.log('tasks')
+const Tasks = ({lists,updateListName,addTask,withoutEmpty}) => {
     const showFromUpdate=()=>{
         let newTitle=prompt('Введите пожалуйста название', lists.name)
         if (newTitle && newTitle!=lists.name) {
@@ -33,7 +32,7 @@ const Tasks = ({lists,updateListName,addTask}) => {
                         </div>
                         <input readOnly type="text" value={i.text}/>
                     </div>
-                }) : <h2>Задачи отcутcтвуют</h2>}
+                }) : !withoutEmpty && (<h2>Задачи отcутcтвуют</h2>)}
                 <AddTaskForm listId={lists.id} addTask={addTask}/>
 
             </div>

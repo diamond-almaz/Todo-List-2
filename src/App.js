@@ -4,7 +4,7 @@ import AddListButton from "./components/AddListButton";
 // import DB from '../src/assets/db.json'
 import Tasks from "./components/Tasks";
 import axios from "axios";
-
+import {Route, useHistory} from 'react-router-dom'
 
 // data.map(item => {
 //     item.color = item.color.name;
@@ -17,6 +17,12 @@ function App() {
     let [lists, setLists] = React.useState(null);
     let [colors, setColors] = React.useState(null)
     let [activeItem,setactiveItem]=React.useState(null)
+
+    let history = useHistory();
+
+    useEffect(()=>{
+        if (lists) setactiveItem(lists.find(i=>i.id==history.location.pathname.split('/lists/')[1]))
+    },[lists,history.location.pathname])
 
     useEffect(() => {
         axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({data}) => {
@@ -64,7 +70,9 @@ function App() {
     return (
         <div className="todo">
             <div className={'todo__sidebar'}>
-                <List items={[
+                <List
+                    onClickItem={()=>{history.push('/')}}
+                    items={[
                     {
                         icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">
@@ -77,14 +85,32 @@ function App() {
                     }
                 ]}/>
                 <List onClickItem={(i)=>{
+                    history.push(`/lists/${i.id}`)
                     setactiveItem(i)
-                }} items={lists} onRemove={onRemoveList} activeItem={activeItem && activeItem}
-                      isRemovable
-                />
+                }} items={lists} onRemove={onRemoveList} activeItem={activeItem && activeItem} isRemovable/>
                 <AddListButton onAddList={onAddList} colors={colors}/>
             </div>
             <div className={'todo__tasks'}>
-                {activeItem && lists &&<Tasks addTask={addTask} updateListName={updateListName} lists={activeItem }/>}
+                <Route exact path='/'>
+                    {lists && lists.map(i=>{
+                       return <Tasks
+                            addTask={addTask}
+                            updateListName={updateListName}
+                            lists={i}
+                            withoutEmpty/>
+                    })}
+                </Route>
+                <Route path='/lists/:id'>
+                    <Tasks
+                        addTask={addTask}
+                        updateListName={updateListName}
+                        lists={activeItem}/>
+                </Route>
+                {/*{activeItem && lists &&*/}
+                {/*<Tasks*/}
+                {/*    addTask={addTask}*/}
+                {/*    updateListName={updateListName}*/}
+                {/*    lists={activeItem }/>}*/}
             </div>
 
         </div>

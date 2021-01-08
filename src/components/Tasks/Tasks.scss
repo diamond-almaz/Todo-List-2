@@ -1,4 +1,7 @@
 .tasks {
+  &:not(:last-of-type) {
+    margin-bottom: 30px;
+  }
   &__title {
     font-family: Montserrat;
     font-weight: bold;

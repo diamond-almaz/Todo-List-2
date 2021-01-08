@@ -66,6 +66,16 @@ function App() {
          setLists(newList)
 
     }
+    const onRemoveTask=(listId,id)=>{
+        const newArr=lists.map(i=>{
+            if (i.id===listId) {
+                i.tasks=i.tasks.filter(i=>i.id!=id)
+            }
+            return i
+        })
+        setLists(newArr)
+        if (window.confirm('Вы действительно хотите удалить задачу?'))  axios.delete(`http://localhost:3001/tasks/${id}`).catch(()=>alert('Не удалось удалить задачу'))
+    }
 
     return (
         <div className="todo">
@@ -94,18 +104,21 @@ function App() {
                 <Route exact path='/'>
                     {lists && lists.map(i=>{
                        return <Tasks
-                            addTask={addTask}
+                           onRemoveTask={onRemoveTask}
+                           addTask={addTask}
                             updateListName={updateListName}
                             lists={i}
                             withoutEmpty/>
                     })}
                 </Route>
                 <Route path='/lists/:id'>
-                    <Tasks
+                    {lists && activeItem && <Tasks
+                        onRemoveTask={onRemoveTask}
                         addTask={addTask}
                         updateListName={updateListName}
-                        lists={activeItem}/>
+                        lists={activeItem}/>}
                 </Route>
+
                 {/*{activeItem && lists &&*/}
                 {/*<Tasks*/}
                 {/*    addTask={addTask}*/}

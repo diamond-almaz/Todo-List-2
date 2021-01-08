@@ -16,11 +16,6 @@
       "id": 8
     },
     {
-      "name": "Ghbdtn",
-      "colorId": 1,
-      "id": 9
-    },
-    {
       "name": "Планы",
       "colorId": 6,
       "id": 10
@@ -44,51 +39,29 @@
       "name": "sda",
       "colorId": 1,
       "id": 15
+    },
+    {
+      "name": "kknk",
+      "colorId": 1,
+      "id": 16
+    },
+    {
+      "name": "mmm;l",
+      "colorId": 1,
+      "id": 17
+    },
+    {
+      "name": "Список покупок",
+      "colorId": 3,
+      "id": 18
+    },
+    {
+      "name": "Список всего, что есть на всете",
+      "colorId": 2,
+      "id": 19
     }
   ],
   "tasks": [
-    {
-      "listId": 4,
-      "text": "Купить 1984!",
-      "completed": true,
-      "id": 10
-    },
-    {
-      "listId": 4,
-      "text": "выф",
-      "completed": false,
-      "id": 11
-    },
-    {
-      "listId": 4,
-      "text": "ыфв",
-      "completed": false,
-      "id": 12
-    },
-    {
-      "listId": 4,
-      "text": "ыфв",
-      "completed": false,
-      "id": 13
-    },
-    {
-      "listId": 4,
-      "text": "фыв",
-      "completed": false,
-      "id": 14
-    },
-    {
-      "listId": 4,
-      "text": "фыв",
-      "completed": false,
-      "id": 15
-    },
-    {
-      "listId": 4,
-      "text": "лдвлвы",
-      "completed": false,
-      "id": 16
-    },
     {
       "listId": 8,
       "text": "ыфваф",
@@ -100,6 +73,24 @@
       "text": "dsa",
       "completed": false,
       "id": 18
+    },
+    {
+      "listId": 4,
+      "text": "Рэй Бредбери - 451 градус по Фаренгейту",
+      "completed": false,
+      "id": 19
+    },
+    {
+      "listId": 4,
+      "text": "вы фвфытыфв",
+      "completed": false,
+      "id": 20
+    },
+    {
+      "listId": 4,
+      "text": "выффы",
+      "completed": false,
+      "id": 21
     }
   ],
   "colors": [

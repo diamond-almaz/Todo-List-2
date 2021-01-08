@@ -18,7 +18,7 @@ function AddTaskForm({addTask, listId}) {
 
     return (
         <div className="tasks__form">
-            {!visibleForm
+            {visibleForm
                 ?
                 <div onClick={toggleFormVisible} className="tasks__form-new">
                     <img src={addSvg} alt="Add Icon"/>

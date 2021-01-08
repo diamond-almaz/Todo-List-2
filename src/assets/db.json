@@ -21,11 +21,6 @@
       "id": 10
     },
     {
-      "name": "фыв",
-      "colorId": 8,
-      "id": 11
-    },
-    {
       "name": "sdad",
       "colorId": 4,
       "id": 12
@@ -51,14 +46,14 @@
       "id": 17
     },
     {
-      "name": "Список покупок",
-      "colorId": 3,
-      "id": 18
-    },
-    {
       "name": "Список всего, что есть на всете",
       "colorId": 2,
       "id": 19
+    },
+    {
+      "name": "dsadasd",
+      "colorId": 1,
+      "id": 21
     }
   ],
   "tasks": [
@@ -82,15 +77,39 @@
     },
     {
       "listId": 4,
-      "text": "вы фвфытыфв",
+      "text": "dasdas",
       "completed": false,
       "id": 20
     },
     {
-      "listId": 4,
-      "text": "выффы",
+      "listId": 7,
+      "text": "",
       "completed": false,
       "id": 21
+    },
+    {
+      "listId": 7,
+      "text": "",
+      "completed": false,
+      "id": 22
+    },
+    {
+      "listId": 4,
+      "text": "",
+      "completed": false,
+      "id": 23
+    },
+    {
+      "listId": 14,
+      "text": "",
+      "completed": false,
+      "id": 24
+    },
+    {
+      "listId": 14,
+      "text": "",
+      "completed": false,
+      "id": 25
     }
   ],
   "colors": [

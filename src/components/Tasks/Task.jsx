@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Task = ({id,text,onRemove,listId}) => {
+const Task = ({id,text,listId,onRemove,onEdit}) => {
     return (
         <div key={id} className="tasks__items-row">
             <div className={'checkbox'}>
@@ -16,7 +16,7 @@ const Task = ({id,text,onRemove,listId}) => {
             </div>
             <input readOnly type="text" value={text}/>
             <div className="tasks__items-row-actions">
-                <div >
+                <div onClick={()=>onEdit(listId,{id, text})}>
                     <svg
                         width="15"
                         height="15"

@@ -66,6 +66,7 @@ function App() {
          setLists(newList)
 
     }
+
     const onRemoveTask=(listId,id)=>{
         const newArr=lists.map(i=>{
             if (i.id===listId) {
@@ -76,13 +77,31 @@ function App() {
         setLists(newArr)
         if (window.confirm('Вы действительно хотите удалить задачу?'))  axios.delete(`http://localhost:3001/tasks/${id}`).catch(()=>alert('Не удалось удалить задачу'))
     }
+    const onEditTask=(listId,taskObj)=>{
+        const newText=prompt('Переименуйте задачу',taskObj.text)
+        if (!newText) {
+            return
+        }
+        const newList=lists.map(item=>{
+            if (item.id===listId) {
+                item.tasks=item.tasks.map(task=>{
+                    if (task.id===taskObj.id) {
+                        task.text=newText
+                    }
+                    return task
+                })
+            }
+                return item
+        })
+        setLists(newList)
+        axios.patch(`http://localhost:3001/tasks/${taskObj.id}`,{text: newText}).catch(()=>alert('Задача не обновилась'))
+    }
+
 
     return (
         <div className="todo">
             <div className={'todo__sidebar'}>
-                <List
-                    onClickItem={()=>{history.push('/')}}
-                    items={[
+                <List onClickItem={()=>{history.push('/')}} items={[
                     {
                         icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +110,7 @@ function App() {
                                 fill="black"/>
                         </svg>,
                         name: 'Все задачи',
-                        active: true
+                        active: !activeItem
                     }
                 ]}/>
                 <List onClickItem={(i)=>{
@@ -104,6 +123,7 @@ function App() {
                 <Route exact path='/'>
                     {lists && lists.map(i=>{
                        return <Tasks
+                           onEditTask={onEditTask}
                            onRemoveTask={onRemoveTask}
                            addTask={addTask}
                             updateListName={updateListName}
@@ -113,6 +133,7 @@ function App() {
                 </Route>
                 <Route path='/lists/:id'>
                     {lists && activeItem && <Tasks
+                        onEditTask={onEditTask}
                         onRemoveTask={onRemoveTask}
                         addTask={addTask}
                         updateListName={updateListName}

@@ -19,6 +19,21 @@
       "name": "Ghbdtn",
       "colorId": 1,
       "id": 9
+    },
+    {
+      "name": "Планы",
+      "colorId": 6,
+      "id": 10
+    },
+    {
+      "name": "фыв",
+      "colorId": 8,
+      "id": 11
+    },
+    {
+      "name": "sdad",
+      "colorId": 4,
+      "id": 12
     }
   ],
   "tasks": [
@@ -69,6 +84,12 @@
       "text": "ыфваф",
       "completed": false,
       "id": 17
+    },
+    {
+      "listId": 7,
+      "text": "dsa",
+      "completed": false,
+      "id": 18
     }
   ],
   "colors": [

@@ -12,12 +12,12 @@ const Tasks = ({lists,updateListName,addTask}) => {
         }
     }
     return (<div className="tasks">
-            <h2 className={'tasks__title'}>
+            <h2 style={{color: lists.color.hex}} className={'tasks__title'}>
                 {lists.name}
                 <img onClick={showFromUpdate} src={editSvg} alt='Edit icon'/>
             </h2>
             <div className="tasks__items">
-                {lists.tasks.length > 0 ? lists.tasks.map(i => {
+                {lists.tasks && lists.tasks.length > 0 ? lists.tasks.map(i => {
                     return <div key={i.id} className="tasks__items-row">
                         <div className={'checkbox'}>
                             <input id={`task-${i.id}`} type="checkbox"/>

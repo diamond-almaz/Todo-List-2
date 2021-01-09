@@ -55,27 +55,36 @@ function App() {
     }
 
     const addTask=(listId, text)=>{
+        console.log(listId,text)
         const obj={listId, text, "completed": false }
-        const newList=lists.map(i=>{
-            if (i.id==listId) {
-                i.tasks=[...i.tasks,obj]
+        debugger;
+        axios.post('http://localhost:3001/tasks', obj).then((i)=> {
+            const newList=lists.map(list=>{
+                if (list.id==listId) {
+                    list.tasks=[...list.tasks,{...obj,id: i.data.id}]
             }
-            return i
+                return list
+            })
+            setLists(newList)
+
         })
-        axios.post('http://localhost:3001/tasks', obj)
-         setLists(newList)
 
     }
 
     const onRemoveTask=(listId,id)=>{
-        const newArr=lists.map(i=>{
-            if (i.id===listId) {
-                i.tasks=i.tasks.filter(i=>i.id!=id)
-            }
-            return i
-        })
-        setLists(newArr)
-        if (window.confirm('Вы действительно хотите удалить задачу?'))  axios.delete(`http://localhost:3001/tasks/${id}`).catch(()=>alert('Не удалось удалить задачу'))
+        console.log(listId,id)
+        if (window.confirm('Вы действительно хотите удалить задачу?')) {
+            const newArr = lists.map(i => {
+                if (i.id === listId) {
+                    i.tasks = i.tasks.filter(i => i.id != id)
+                }
+                return i
+            })
+            setLists(newArr)
+            axios.delete(`http://localhost:3001/tasks/${id}`).then(()=> {
+                alert('Задача удалена')
+            }).catch(() => alert('Не удалось удалить задачу'))
+        }
     }
     const onEditTask=(listId,taskObj)=>{
         const newText=prompt('Переименуйте задачу',taskObj.text)

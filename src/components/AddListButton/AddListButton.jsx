@@ -25,7 +25,7 @@ const AddListButton = ({colors, onAddList}) => {
 
     const addList = () => {
         if (!inputValue) {
-            alert('Чтобы дабавить задачу введите название.');
+            alert('Чтобы добавить название списка введите значение.');
             return
         }
         setIsLoading(true)

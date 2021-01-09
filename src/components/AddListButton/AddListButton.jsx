@@ -64,7 +64,7 @@ const AddListButton = ({colors, onAddList}) => {
                 <input onChange={(e) => setInputValue(e.target.value)} value={inputValue} className={'field'}
                        placeholder={'Название списка'} type="text"/>
                 <div className={'add-list__popup-color'}>
-                    {colors.map(i => <Badge className={selectedColor == i.id && 'active'} onClick={() => {
+                    {colors.map(i => <Badge className={selectedColor === i.id && 'active'} onClick={() => {
                         selectColor(i.id)
                     }} key={i.id} color={i.name}/>)}
 

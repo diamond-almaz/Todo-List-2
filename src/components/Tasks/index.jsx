@@ -7,7 +7,7 @@ import Task from "./Task";
 const Tasks = ({lists,updateListName,addTask,withoutEmpty,onRemoveTask,onEditTask,onChangeCompletedTask}) => {
      const showFromUpdate=()=>{
         let newTitle=prompt('Введите пожалуйста название', lists.name)
-        if (newTitle && newTitle!=lists.name) {
+        if (newTitle && newTitle!==lists.name) {
             updateListName(lists.id,newTitle)
         }
     }

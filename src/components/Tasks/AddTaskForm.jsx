@@ -16,7 +16,6 @@ function AddTaskForm({addTask, listId}) {
             alert('Введите пожалуйста значение')
             return
         }
-        debugger;
         addTask(listId, inputValue)
         toggleFormVisible()
     }

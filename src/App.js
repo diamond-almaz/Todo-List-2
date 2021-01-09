@@ -21,7 +21,7 @@ function App() {
     let history = useHistory();
 
     useEffect(()=>{
-        if (lists) setactiveItem(lists.find(i=>i.id==history.location.pathname.split('/lists/')[1]))
+        if (lists) setactiveItem(lists.find(i=>i.id===Number(history.location.pathname.split('/lists/')[1])))
     },[lists,history.location.pathname])
 
     useEffect(() => {
@@ -42,7 +42,7 @@ function App() {
 
     //Функция для удаления списка задач. Параметры: id - идентификатор списка задач.
     const onRemoveList = (id) => {
-        setLists(lists.filter(i => i.id != id))
+        setLists(lists.filter(i => i.id !== id))
         axios.delete(`http://localhost:3001/lists/${id}`).then(()=>{
         })
     }
@@ -51,7 +51,7 @@ function App() {
     const updateListName=(id, newTitle)=>{
         console.log('Функция updateListName')
         const newObj=[...lists]
-        newObj.find(i=>i.id==id).name=newTitle
+        newObj.find(i=>i.id===id).name=newTitle
         setLists(newObj)
         axios.patch('http://localhost:3001/lists/'+id,{name: newTitle}).catch(()=>alert('Не получилось обновить название списка'))
     }
@@ -59,10 +59,9 @@ function App() {
     // Функция для добавления задачи
     const addTask=(listId, text)=>{
         const obj={listId, text, "completed": false }
-        debugger;
         axios.post('http://localhost:3001/tasks', obj).then((i)=> {
             const newList=lists.map(list=>{
-                if (list.id==listId) {
+                if (list.id===listId) {
                     list.tasks=[...list.tasks,{...obj,id: i.data.id}]
             }
                 return list
@@ -79,7 +78,7 @@ function App() {
         if (window.confirm('Вы действительно хотите удалить задачу?')) {
             const newArr = lists.map(i => {
                 if (i.id === listId) {
-                    i.tasks = i.tasks.filter(i => i.id != id)
+                    i.tasks = i.tasks.filter(i => i.id !== id)
                 }
                 return i
             })
@@ -125,7 +124,6 @@ function App() {
         setLists(newList)
         axios.patch(`http://localhost:3001/tasks/${id}`, {completed: checked}).catch(()=>alert('Не удалось отметить задачу'))
     }
-
 
 
     return (

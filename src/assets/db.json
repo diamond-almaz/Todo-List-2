@@ -12,13 +12,7 @@
       "id": 10
     },
     {
-      "name": "Список покупок",
-      "colorId": 6,
-      "tasks": [],
-      "id": 11
-    },
-    {
-      "name": "Еда",
+      "name": "Едаа",
       "colorId": 4,
       "tasks": [],
       "id": 12
@@ -50,22 +44,16 @@
       "id": 34
     },
     {
-      "listId": 11,
-      "text": "Хлеб",
-      "completed": false,
-      "id": 35
-    },
-    {
-      "listId": 11,
-      "text": "Молоко",
-      "completed": false,
-      "id": 36
-    },
-    {
       "listId": 12,
       "text": "Мимоза",
       "completed": true,
       "id": 37
+    },
+    {
+      "listId": 8,
+      "text": "sadsda",
+      "completed": false,
+      "id": 38
     }
   ],
   "colors": [

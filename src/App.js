@@ -101,7 +101,7 @@ function App() {
     return (
         <div className="todo">
             <div className={'todo__sidebar'}>
-                <List onClickItem={()=>{history.push('/')}} items={[
+                <List onClickItem={()=>{history.push('/'); setactiveItem(null)}} items={[
                     {
                         icon: <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">

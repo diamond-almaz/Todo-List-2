@@ -42,7 +42,7 @@
         background: #FFFFFF;
       }
     }
-    &:hover {
+    &:hover:not(.list__add-button) {
       background: rgba(255, 255, 255, 0.8);
     }
 

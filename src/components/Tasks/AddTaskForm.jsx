@@ -12,6 +12,10 @@ function AddTaskForm({addTask, listId}) {
     }
 
     const onAddTask = () => {
+        if (!inputValue) {
+            alert('Введите пожалуйста значение')
+            return
+        }
         addTask(listId, inputValue)
         toggleFormVisible()
     }

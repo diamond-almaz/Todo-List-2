@@ -123,6 +123,7 @@ function App() {
                 <Route exact path='/'>
                     {lists && lists.map(i=>{
                        return <Tasks
+                           key={i.id}
                            onEditTask={onEditTask}
                            onRemoveTask={onRemoveTask}
                            addTask={addTask}

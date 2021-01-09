@@ -8,7 +8,7 @@ import axios from "axios";
 const AddListButton = ({colors, onAddList}) => {
 
     let [visiblePopup, setvisiblePopup] = useState(false)
-    let [selectedColor, selectColor] = useState(3)
+    let [selectedColor, selectColor] = useState(null)
     let [inputValue, setInputValue] = useState('')
     let [isLoading, setIsLoading] = useState(false)
 
@@ -31,7 +31,8 @@ const AddListButton = ({colors, onAddList}) => {
         setIsLoading(true)
         axios.post('http://localhost:3001/lists', {name: inputValue, colorId: selectedColor})
             .then(({data}) => {
-                const listObj = {...data, color: {name: colors.find(i => i.id == selectedColor).name}}
+                const color=colors.find(i => i.id === selectedColor)
+                const listObj = {...data, color: {name: color.name, hex: color.hex}}
                 onAddList(listObj)
             }).finally(() => {
             onClose()

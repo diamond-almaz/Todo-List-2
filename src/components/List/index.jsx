@@ -6,9 +6,12 @@ import removeSvg from '../../assets/img/remove.svg'
 
 
 function List({items,isRemovable,onClick,onRemove,onClickItem,activeItem}) {
+
     const questionBeforeRemoveList=(id)=>{
         if (window.confirm('Вы точно хотите удалить список?')) onRemove(id)
     }
+
+
 
     return (
         <ul onClick={onClick} className="list">

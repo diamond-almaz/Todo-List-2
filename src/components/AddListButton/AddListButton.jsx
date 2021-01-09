@@ -29,7 +29,7 @@ const AddListButton = ({colors, onAddList}) => {
             return
         }
         setIsLoading(true)
-        axios.post('http://localhost:3001/lists', {name: inputValue, colorId: selectedColor})
+        axios.post('http://localhost:3001/lists?_expand=color&_embed=tasks', {name: inputValue, colorId: selectedColor, tasks: []})
             .then(({data}) => {
                 const color=colors.find(i => i.id === selectedColor)
                 const listObj = {...data, color: {name: color.name, hex: color.hex}}

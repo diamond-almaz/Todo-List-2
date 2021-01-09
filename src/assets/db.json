@@ -1,29 +1,27 @@
 {
   "lists": [
     {
-      "id": 4,
-      "name": "Книжки",
-      "colorId": 2
-    },
-    {
       "name": "Фильмы и сериалы.",
       "colorId": 5,
       "id": 8
     },
     {
-      "name": "Список всего, что есть на всете",
-      "colorId": 2,
-      "id": 19
+      "name": "Песни",
+      "colorId": 6,
+      "tasks": [],
+      "id": 10
     },
     {
-      "name": "das",
+      "name": "Список покупок",
+      "colorId": 6,
+      "tasks": [],
+      "id": 11
+    },
+    {
+      "name": "Еда",
       "colorId": 4,
-      "id": 25
-    },
-    {
-      "name": "asdsad",
-      "colorId": 7,
-      "id": 27
+      "tasks": [],
+      "id": 12
     }
   ],
   "tasks": [
@@ -34,52 +32,40 @@
       "id": 17
     },
     {
-      "listId": 4,
-      "text": "Рэй Бредбери - 451 градус по Фаренгейту",
+      "listId": 10,
+      "text": "Макс Корж - Тепло",
       "completed": false,
-      "id": 19
+      "id": 32
     },
     {
-      "listId": 25,
-      "text": "Cgbcjr",
-      "completed": false,
-      "id": 24
+      "listId": 10,
+      "text": "масло черного тмина - неведомый мир",
+      "completed": true,
+      "id": 33
     },
     {
-      "listId": 25,
-      "text": "dsadsa",
-      "completed": false,
-      "id": 25
+      "listId": 10,
+      "text": "Shortparis - Как закалялась сталь",
+      "completed": true,
+      "id": 34
     },
     {
-      "listId": 4,
-      "text": "sad",
+      "listId": 11,
+      "text": "Хлеб",
       "completed": false,
-      "id": 26
+      "id": 35
     },
     {
-      "listId": 4,
-      "text": "dsa",
+      "listId": 11,
+      "text": "Молоко",
       "completed": false,
-      "id": 27
+      "id": 36
     },
     {
-      "listId": 4,
-      "text": "dsadf",
-      "completed": false,
-      "id": 28
-    },
-    {
-      "listId": 4,
-      "text": "Тест",
-      "completed": false,
-      "id": 29
-    },
-    {
-      "listId": 4,
-      "text": "тест 2",
-      "completed": false,
-      "id": 30
+      "listId": 12,
+      "text": "Мимоза",
+      "completed": true,
+      "id": 37
     }
   ],
   "colors": [

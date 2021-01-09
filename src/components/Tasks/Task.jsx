@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Task = ({id,text,listId,onRemove,onEdit}) => {
+const Task = ({completed,id,text,listId,onRemove,onEdit,onChangeCompleted}) => {
     return (
         <div key={id} className="tasks__items-row">
             <div className={'checkbox'}>
-                <input id={`task-${id}`} type="checkbox"/>
+                <input onClick={(e)=>onChangeCompleted(id,e.target.checked,listId)} checked={completed}  id={`task-${id}`} type="checkbox"/>
                 <label htmlFor={`task-${id}`}>
                     <svg width="11" height="8" viewBox="0 0 11 8" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
@@ -14,7 +14,7 @@ const Task = ({id,text,listId,onRemove,onEdit}) => {
                     </svg>
                 </label>
             </div>
-            <input readOnly type="text" value={text}/>
+            <input style={{"text-decoration": completed && 'line-through'}} readOnly type="text" value={text}/>
             <div className="tasks__items-row-actions">
                 <div onClick={()=>onEdit(listId,{id, text})}>
                     <svg

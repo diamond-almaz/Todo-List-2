@@ -34,18 +34,20 @@ function App() {
         });
     }, [])
 
-
+    //Функция для добавления задачи. Принимает
     const onAddList = (obj) => {
         setLists([...lists, obj])
         console.log('добален', obj)
     }
 
+    //Функция для удаления списка задач. Параметры: id - идентификатор списка задач.
     const onRemoveList = (id) => {
         setLists(lists.filter(i => i.id != id))
         axios.delete(`http://localhost:3001/lists/${id}`).then(()=>{
         })
     }
 
+    // Функция, позволяющая переименовать название списка задач. Параметры: id - идентификатор списка задач, newTitle - новая строка
     const updateListName=(id, newTitle)=>{
         console.log('Функция updateListName')
         const newObj=[...lists]
@@ -54,8 +56,8 @@ function App() {
         axios.patch('http://localhost:3001/lists/'+id,{name: newTitle}).catch(()=>alert('Не получилось обновить название списка'))
     }
 
+    // Функция для добавления задачи
     const addTask=(listId, text)=>{
-        console.log(listId,text)
         const obj={listId, text, "completed": false }
         debugger;
         axios.post('http://localhost:3001/tasks', obj).then((i)=> {
@@ -71,6 +73,7 @@ function App() {
 
     }
 
+    //Функция для удаления задачи
     const onRemoveTask=(listId,id)=>{
         console.log(listId,id)
         if (window.confirm('Вы действительно хотите удалить задачу?')) {
@@ -81,11 +84,11 @@ function App() {
                 return i
             })
             setLists(newArr)
-            axios.delete(`http://localhost:3001/tasks/${id}`).then(()=> {
-                alert('Задача удалена')
-            }).catch(() => alert('Не удалось удалить задачу'))
+            axios.delete(`http://localhost:3001/tasks/${id}`).catch(() => alert('Не удалось удалить задачу'))
         }
     }
+
+    //Функция для того, чтобы поменять свойство текст задачи
     const onEditTask=(listId,taskObj)=>{
         const newText=prompt('Переименуйте задачу',taskObj.text)
         if (!newText) {
@@ -105,6 +108,24 @@ function App() {
         setLists(newList)
         axios.patch(`http://localhost:3001/tasks/${taskObj.id}`,{text: newText}).catch(()=>alert('Задача не обновилась'))
     }
+
+    //Функция для того, чтобы поменять свойство completed у задачи
+    const onChangeCompletedTask=(id, checked, listId)=>{
+        const newList=lists.map(item=>{
+            if (item.id===listId) {
+                item.tasks=item.tasks.map(task=>{
+                    if (task.id===id) {
+                        task.completed=checked
+                    }
+                    return task
+                })
+            }
+            return item
+        })
+        setLists(newList)
+        axios.patch(`http://localhost:3001/tasks/${id}`, {completed: checked}).catch(()=>alert('Не удалось отметить задачу'))
+    }
+
 
 
     return (
@@ -132,6 +153,7 @@ function App() {
                 <Route exact path='/'>
                     {lists && lists.map(i=>{
                        return <Tasks
+                           onChangeCompletedTask={onChangeCompletedTask}
                            key={i.id}
                            onEditTask={onEditTask}
                            onRemoveTask={onRemoveTask}
@@ -143,6 +165,7 @@ function App() {
                 </Route>
                 <Route path='/lists/:id'>
                     {lists && activeItem && <Tasks
+                        onChangeCompletedTask={onChangeCompletedTask}
                         onEditTask={onEditTask}
                         onRemoveTask={onRemoveTask}
                         addTask={addTask}

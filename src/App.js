@@ -58,6 +58,8 @@ function App() {
 
     // Функция для добавления задачи
     const addTask=(listId, text)=>{
+        console.log(lists)
+
         const obj={listId, text, "completed": false }
         axios.post('http://localhost:3001/tasks', obj).then((i)=> {
             const newList=lists.map(list=>{
@@ -67,7 +69,7 @@ function App() {
                 return list
             })
             setLists(newList)
-
+            console.log(lists)
         })
 
     }
